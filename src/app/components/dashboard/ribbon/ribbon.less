@@ -1,0 +1,117 @@
+@darken: 30%;
+
+.ribbonMixin(@position) {
+    @color: green;
+    position: absolute;
+    top: -6px;
+    @{position}: -6px;
+    z-index: 1;
+    overflow: hidden;
+    width: 75px;
+    height: 75px;
+    text-align: right;
+    
+    .caption {
+        font-size: 10px;
+        font-weight: bold;
+        color: #FFF;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 20px;
+        width: 100px;
+        display: block;
+        box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+        & when (@position = left) {
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+        & when (@position = right) {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+        position: absolute;
+        top: 19px;
+        @{position}: -21px;
+        
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0px;
+            top: 100%;
+            z-index: -1;
+            border-left: 3px solid darken(@color, @darken);
+            border-right: 3px solid transparent;
+            border-bottom: 3px solid transparent;
+            border-top: 3px solid darken(@color, @darken);
+        }
+        
+        &:after {
+            content: "";
+            position: absolute;
+            right: 0px;
+            top: 100%;
+            z-index: -1;
+            border-left: 3px solid transparent;
+            border-right: 3px solid darken(@color, @darken);
+            border-bottom: 3px solid transparent;
+            border-top: 3px solid darken(@color, @darken);
+        }
+    }
+}
+
+.ribbonColorMixin(@color: green) {
+    .caption {
+        background: darken(@color, 10%);
+        background: -webkit-gradient(linear, 0 0, 0 100%, from(@color), to(darken(@color, @darken)));
+        background: -webkit-linear-gradient(@color 0%, darken(@color, @darken) 100%);
+        background: -moz-linear-gradient(@color 0%, darken(@color, @darken) 100%);
+        background: -o-linear-gradient(@color 0%, darken(@color, @darken) 100%);
+        background: linear-gradient(@color 0%, darken(@color, @darken) 100%);
+        
+        &:before {
+            border-left: 3px solid darken(@color, @darken);
+            border-top: 3px solid darken(@color, @darken);
+        }
+        
+        &:after {
+            border-right: 3px solid darken(@color, @darken);
+            border-top: 3px solid darken(@color, @darken);
+        }
+    }
+}
+
+.ribbonBigMixin()
+{
+    width: 125px;
+    height: 125px;
+    
+    .caption {
+        width: 155px;
+        top:38px;
+    }
+    
+    &.left {
+        .caption {
+            left:-29px;
+        }
+    }
+
+    &.right {
+        .caption {
+            right:-29px;
+        }
+    }
+}
+
+.ribbon {
+    &.left { .ribbonMixin(@position: left); }
+    &.right { .ribbonMixin(@position: right); }
+
+    &.blue { .ribbonColorMixin(@color: #2989d8); }
+    &.green { .ribbonColorMixin(@color: #9BC90D); }
+    &.red { .ribbonColorMixin(@color: #F70505); }
+    &.grey { .ribbonColorMixin(@color: #B6BAC9); }
+    &.orange { .ribbonColorMixin(@color: #F79E05); }
+
+    &.big { .ribbonBigMixin(); }
+}

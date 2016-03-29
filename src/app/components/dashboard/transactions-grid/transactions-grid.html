@@ -1,0 +1,15 @@
+<span ng-hide="$ctrl.transactions.length > 0">No payments registered yet. Click the button below to register a payment.</span>
+<table ng-show="$ctrl.transactions.length > 0" class="table table-sm" style="font-size:11px;">
+    <tr>
+        <th>Date</th>
+        <th>Payment</th>
+        <th>Amount</th>
+        <th>Paid</th>
+    </tr>
+    <tr ng-repeat="trans in $ctrl.transactions">
+        <td>{{trans.paid | date : format : shortDate}}</td>
+        <td>DEMO</td>
+        <td>{{trans.totalAmount | currency}}</td>
+        <td>Yes</td>
+    </tr>
+</table>

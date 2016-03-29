@@ -1,0 +1,39 @@
+<!-- Place all UI elements intended to be present across all routes in this file -->
+<div class="app">
+    <header>
+        <nav class="navbar navbar-light navbar-static-top bg-faded">
+            <div class="container">
+                <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+                    &#9776;
+                </button>
+                <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+                    <a class="navbar-brand" href="/"></a>
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" ui-sref="landing">Home<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" ui-sref="login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" ui-sref="dashboard">My Properties</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid body-content" style="background-image: url('/images/home.jpg');background-attachment: fixed; background-position: center 20%; ">
+        <div ui-view></div>
+    </div>
+    <footer class="navbar navbar-fixed-bottom bg-faded" style="background-color: #e3f2fd;">
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+
+
+
+
+
+
+
+</div>

@@ -1,0 +1,61 @@
+<div class="card">
+    <ribbon position="left" color="blue" size="big">MULTI-TENANT</ribbon>
+    <ribbon position="left" color="green" size="small">LANDLORD</ribbon>
+    <ribbon position="right" color="red" size="small">OVERDUE</ribbon>
+    <ribbon position="right" color="orange" size="big">AVAILABLE</ribbon>
+
+    <ui-gmap-google-map center='::$ctrl.contract.loc.center' zoom='::$ctrl.contract.loc.zoom'>
+        <ui-gmap-marker coords="::$ctrl.contract.loc.marker" idkey="::$ctrl.contract.recordId">
+        </ui-gmap-marker>
+    </ui-gmap-google-map>
+    <div class="card-block" ng-init="activetab[$ctrl.contract.property.recordId] = 1">
+        <div class="tabswrapper">
+            <ul class="nav nav-tabs">
+                <li class="nav-item" ng-class="{open: activetab[$ctrl.contract.property.recordId] == 1}"><a class="nav-link" ng-class="{active: activetab[$ctrl.contract.property.recordId] == 1}" ng-click="activetab[$ctrl.contract.property.recordId] = 1" data-toggle="tab"><span class="fa fa-map-marker fa-lg"></span></a></li>
+                <li class="nav-item" ng-class="{open: activetab[$ctrl.contract.property.recordId] == 2}"><a class="nav-link" ng-class="{active: activetab[$ctrl.contract.property.recordId] == 2}" ng-click="activetab[$ctrl.contract.property.recordId] = 2" data-toggle="tab"><span class="fa fa-money fa-lg"></span></a></li>
+                <li class="nav-item" ng-class="{open: activetab[$ctrl.contract.property.recordId] == 3}"><a class="nav-link" ng-class="{active: activetab[$ctrl.contract.property.recordId] == 3}" ng-click="activetab[$ctrl.contract.property.recordId] = 3" data-toggle="tab"><span class="fa fa-user fa-lg"></span></a></li>
+                <li class="nav-item" ng-class="{open: activetab[$ctrl.contract.property.recordId] == 4}"><a class="nav-link" ng-class="{active: activetab[$ctrl.contract.property.recordId] == 4}" ng-click="activetab[$ctrl.contract.property.recordId] = 4" data-toggle="tab"><span class="fa fa-envelope fa-lg"></span></a></li>
+                <li class="nav-item" ng-class="{open: activetab[$ctrl.contract.property.recordId] == 5}"><a class="nav-link" ng-class="{active: activetab[$ctrl.contract.property.recordId] == 5}" ng-click="activetab[$ctrl.contract.property.recordId] = 5" data-toggle="tab"><span class="fa fa-wrench fa-lg"></span></a></li>
+            </ul>
+        </div>
+        <h4 class="card-title"><b>Property #{{$ctrl.contract.property.recordId}}</b></h4>
+        <p class="card-text">
+            <div class="tab-content">
+                <div class="tab-pane active" ng-class="{active: activetab[$ctrl.contract.property.recordId] == 1}" ng-show="activetab[$ctrl.contract.property.recordId] == 1">
+                    <property-info property="$ctrl.contract.property"></property-info>
+                </div>
+                <div class="tab-pane" ng-class="{active: activetab[$ctrl.contract.property.recordId] == 2}" ng-show="activetab[$ctrl.contract.property.recordId] == 2">
+                    <transactions-grid transactions="$ctrl.contract.transactions"></transactions-grid>
+                </div>
+                <div class="tab-pane" ng-class="{active: activetab[$ctrl.contract.property.recordId] == 3}" ng-show="activetab[$ctrl.contract.property.recordId] == 3">
+                    Send an invite to other tenants or the property owner to join this website
+                    <br/>
+                    <input class="form-control" type="email" placeholder="E-mail address">
+                </div>
+                <div class="tab-pane" ng-class="{active: activetab[$ctrl.contract.property.recordId] == 4}" ng-show="activetab[$ctrl.contract.property.recordId] == 4">
+                    Send a message to your landlord</br>
+                    <textarea class="form-control" id="exampleTextarea" rows="5" placeholder="Message..."></textarea>
+                </div>
+                <div class="tab-pane" ng-class="{active: activetab[$ctrl.contract.property.recordId] == 5}" ng-show="activetab[$ctrl.contract.property.recordId] == 5">
+                    Send a maintenance request to your landlord</br>
+                    <textarea class="form-control" id="exampleTextarea" rows="5" placeholder="Maintenance request..."></textarea>
+                </div>
+            </div>
+        </p>
+    </div>
+    <div class="card-footer" ng-show="activetab[$ctrl.contract.property.recordId] == 1">
+        <h3><b>{{::$ctrl.contract.schedules[0].scheduledAmount | currency }}</b> monthly</h3>
+    </div>
+    <div class="card-footer" ng-show="activetab[$ctrl.contract.property.recordId] == 2">
+        <button type="button" class="btn btn-primary btn-sm">Register payment</button>
+    </div>
+    <div class="card-footer" ng-show="activetab[$ctrl.contract.property.recordId] == 3">
+        <button type="button" class="btn btn-primary btn-sm">Send invite</button>
+    </div>
+    <div class="card-footer" ng-show="activetab[$ctrl.contract.property.recordId] == 4">
+        <button type="button" class="btn btn-primary btn-sm">Send message</button>
+    </div>
+    <div class="card-footer" ng-show="activetab[$ctrl.contract.property.recordId] == 5">
+        <button type="button" class="btn btn-primary btn-sm">Send maintenance request</button>
+    </div>
+</div>
