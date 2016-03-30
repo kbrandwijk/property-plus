@@ -1,40 +1,49 @@
-NG6-starter TodoMVC Example
-============================
+Proof of Concept for Property Plus
+==================================
 
-This application is example of how you can write your angular applications using [NG6-starter](https://github.com/AngularClass/NG6-starter) as your starting point. Currently this example provides you:
+This application is a Proof of Concept for the Property Plus website contest.
 
- - Example of small-sized application
- - UI components examples
- - Service example which includes unit tests
- - Unit tests for controllers of UI components
- 
-But there is still some things that should be done:
+## What does it do?
 
- - Improve test coverage
- - Provide example of E2E testing
- 
-If you have some other ideas of how improve this example, or you have questions, please welcome to our [issue tracker](https://github.com/AngularClass/NG6-todomvc-starter/issues).
+It contains the following pages:
 
-## Learning AngularJS
+- Home
+- About
+- Terms of Use
+- Login/Sign up
+- My Properties
 
-Official [AngularJS website](http://angularjs.org/) is good place to start, but it lacks of best practices and not provides you base concepts, which could simplify your life. There is some links that can help you better understand how to write maintainable applications using AngularJS. 
+The following functionalities are implemented:
 
- - [Angular Styleguide](https://github.com/johnpapa/angular-styleguide) - This is basically angular best practices. There are some differences for ES2015 but the explanation of these practices remains the same.
- - [Optionated Angular Styleguide](https://github.com/toddmotto/angular-styleguide) - this is an extended version of angular styleguide, which covers additional information relevant to dev teams.
- - [Code Organization in Large AngularJS and JavaScript Applications](http://cliffmeyers.com/blog/2013/4/21/code-organization-angularjs-javascript) - This article explains a directory structure, proposed in angular styleguide with more details and use cases.
- - The Top 5 Mistakes AngularJS Developers Make - This is a great series of posts describing in depth the common mistakes and how to not make them.
-   - [Heavy reliance on $scope (not using controller as) ](http://csharperimage.jeremylikness.com/2014/11/the-top-5-mistakes-angularjs-developers.html)
-   - [Abusing $watch](http://csharperimage.jeremylikness.com/2014/11/the-top-5-mistakes-angularjs-developers_28.html)
-   - [Overusing $broadcast and $emit](http://csharperimage.jeremylikness.com/2014/12/the-top-5-mistakes-angularjs-developers.html)
-   - [Hacking the DOM](http://csharperimage.jeremylikness.com/2014/12/the-top-5-mistakes-angularjs-developers_13.html)
-   - [Failing to Test](http://csharperimage.jeremylikness.com/2014/12/the-top-5-mistakes-angularjs-developers_28.html)
- - [AngularJS: The Bad Parts](http://larseidnes.com/2014/11/05/angularjs-the-bad-parts/) - To not fall into a trap, developers always should know the problems of tools they are using. With this knowledge in mind, you will write more maintainable applications.
- - [You don't always need AngularJS DI in directives](http://michalostruszka.pl/blog/2015/01/18/angular-directives-di/) - This article will help you to make more reusable UI components.
- - [Exploring the Angular 1.5 `.component()` method](https://toddmotto.com/exploring-the-angular-1-5-component-method/)
- - [A Guide To Transclusion in AngularJS](http://teropa.info/blog/2015/06/09/transclusion.html)
+- Logging in with existing account (long running request should use loading bar like in the demo, but I ran out of time)
+- Logging in with external accounts (all functionality implemented, but without any external id's)
+- Viewing your properties (see below)
+- Logging out
 
-*If you have any others helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/AngularClass/NG6-todomvc-starter/issues).*
+## My Properties
 
-## Testing
+The main functionality of the site is contained in the My Properties page. There is a lot of functionality, some of which are combined in one page for reasons of this being a POC.
+This was really the main focus for me, the rest of the front-end is mainly content pages and login.
 
-The app uses [Karma](http://karma-runner.github.io/0.12/index.html) to run the tests, which you can find near the test target (`*.spec.js` files).
+- <b>Adding properties</b>. There should be a place to add a property. Clicking the button should show the 'add property' form inside the card body, and the button will change to 'save property'.
+The actual form is not implemented yet in the POC.
+- <b>The property card</b>. The property card shows all information about a property and a contract. The current selection only shows properties that have a contract, but that's just based on the limited information about the API. Ideally, all properties will be shown here.
+    -   <b>Property information</b>. The first tab shows the property information (address). If there is a current contract, it will show the rental amount. If there is no contract, there could be a button 'add contract' in place of the rental amount.
+    -   <b>Payments</b>. This tab shows a grid of payment history. Also, registering a payment should be done from here. Clicking the button should show the form to register a payment over the grid. Not implemented in the POC. I think the idea is clear.
+    -   <b>Invite</b>. Invite either the landlord, or other tenants, to the website. Functionality should depend on whether you're logged in as landlord or tenant, but that information was not in the API yet.
+    -   <b>Send message</b>. Send message to either landlord or tenant, depending on login role. Again, login role was not available.
+    -   <b>Request maintenance</b>. Should be tenant only functionality
+    -   <b>Map</b>. Fictional location, because there was no working address or coordinates in the API.
+    -   <b>Ribbons</b>. Ribbons are shown as a feature demonstration. It makes it easy to highlight for example overdue payments, available properties (e.g. no current contract), whether it's multi-tenancy, if there is a new message waiting or anything like that. They come in all colors and two sizes, for both corners.
+    
+## How does it work?
+
+I am a strong believer in not re-inventing the same things over and over again, so I try to stick to proven methods and components.
+
+- All code is written using ES6
+- All features are implemented as components and directives, making the code very readable and modular
+- All stylesheets use either plain CSS or LESS
+- All code is packaged and compiled using Webpack
+- Satellizer is used for login funtionality
+- Bootstrap is used for UI components
+- ...
