@@ -4,10 +4,9 @@
     <ribbon position="right" color="red" size="small">OVERDUE</ribbon>
     <ribbon position="right" color="orange" size="big">AVAILABLE</ribbon>
 
-    <ui-gmap-google-map center='::$ctrl.contract.loc.center' zoom='::$ctrl.contract.loc.zoom'>
-        <ui-gmap-marker coords="::$ctrl.contract.loc.marker" idkey="::$ctrl.contract.recordId">
-        </ui-gmap-marker>
-    </ui-gmap-google-map>
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center={{$ctrl.contract.loc.center.latitude}},{{$ctrl.contract.loc.center.longitude}}&zoom=19&size=348x190&maptype=roadmap
+&markers=color:red%7Clabel:C%7C{{$ctrl.contract.loc.center.latitude}},{{$ctrl.contract.loc.center.longitude}}"/>
+    
     <div class="card-block" ng-init="activetab[$ctrl.contract.property.recordId] = 1">
         <div class="tabswrapper">
             <ul class="nav nav-tabs">

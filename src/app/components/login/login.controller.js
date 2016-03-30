@@ -17,7 +17,7 @@ export default class LoginCtrl {
       $auth.authenticate(provider)
         .then(function() {
           //toastr.success('You have successfully signed in with ' + provider + '!');
-          $location.path('/');
+          $state.go('dashboard');
         })
         .catch(function(error) {
           if (error.error) {

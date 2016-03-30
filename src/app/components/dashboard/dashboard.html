@@ -3,6 +3,9 @@
         <div class="col-lg-4 col-sm-6 cardwrapper">
             <add-property-card></add-property-card>
         </div>
+        <div class="col-lg-4 col-sm-6 cardwrapper" ng-show="vm.loading">
+            <loading-card></loading-card>
+        </div>
         <div class="col-lg-4 col-sm-6 cardwrapper" ng-repeat="contract in vm.contractsList">
             <property-card contract="contract"></property-card>
         </div>

@@ -1,12 +1,15 @@
 var webpack = require('webpack');
-var path    = require('path');
-var config  = require('./webpack.config');
+var path = require('path');
+var config = require('./webpack.config');
 
 config.output = {
   filename: '[name].bundle.js',
   publicPath: '/',
   path: path.resolve(__dirname, 'client')
 };
+
+  config.devtool = 'sourcemap';
+
 
 config.plugins = config.plugins.concat([
 

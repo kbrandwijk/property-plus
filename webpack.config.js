@@ -3,7 +3,6 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  devtool: 'sourcemap',
   entry: {},
   module: {
     loaders: [{
@@ -34,15 +33,15 @@ module.exports = {
       inject: 'body',
       hash: true
     }),
-    
+
     new webpack.ProvidePlugin({
-            jQuery: 'jquery',
-            $: 'jquery',
-            jquery: 'jquery',
-            "Tether": 'tether',
-            "window.Tether": "tether",
-            "_": "lodash"
-        }),
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery',
+      "Tether": 'tether',
+      "window.Tether": "tether",
+      "_": "lodash"
+    }),
 
     // Automatically move all modules defined outside of application directory to vendor bundle.
     // If you are using more complicated project structure, consider to specify common chunks manually.
