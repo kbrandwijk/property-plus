@@ -1,0 +1,12 @@
+<nav class="navbar navbar-light navbar-fixed-top bg-faded">
+    <div class="container">
+        <a class="navbar-brand" ui-sref="landing">Property Plus</a>
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link" ui-sref="landing">Home</a>
+            <a class="nav-item nav-link" ui-sref="aboutus">About us</a>
+            <a class="nav-item nav-link" ng-show="vm.isAuthenticated()" ui-sref="dashboard">My Properties</a>
+            <a class="nav-item nav-link pull-xs-right" ng-show="!vm.isAuthenticated()" ui-sref="login">Login | Sign up</a>
+            <a class="nav-item nav-link pull-xs-right" ng-show="vm.isAuthenticated()" ng-click="vm.logout()">Logout</a>
+        </div>
+    </div>
+</nav>
