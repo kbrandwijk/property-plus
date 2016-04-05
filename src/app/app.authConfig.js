@@ -4,6 +4,7 @@ export default function authConfig($authProvider) {
     $authProvider.loginUrl = 'http://demoapi03032016.azurewebsites.net/token';
     $authProvider.tokenName = 'access_token';
     $authProvider.httpInterceptor = false;
+    $authProvider.signupUrl = 'http://demoapi03032016.azurewebsites.net/api/account/register';
 
     $authProvider.oauth2({
         name: 'propertyplus',

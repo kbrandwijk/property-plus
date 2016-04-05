@@ -7,9 +7,9 @@
         <div class="card-header">
           <b>Log in</b>
         </div>
-        <div class="card-block" style="height:475px">
+        <div class="card-block" style="height:520px">
           <p class="card-text">
-            <form method="post" ng-submit="vm.login()" name="loginForm">
+            <form method="post" ng-submit="vm.login(vm.user)" name="loginForm">
               <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1"><i class="ion-android-mail"></i></span>
                 <input type="email" ng-model="vm.user.email" class="form-control" name="email" placeholder="Email" required autofocus aria-describedby="basic-addon1">
@@ -70,8 +70,53 @@
         <div class="card-header">
           <b>No account yet? Sign up!</b>
         </div>
-        <div class="card-block" style="height:475px">
+        <div class="card-block" style="height:520px">
           <p class="card-text">
+            <form method="post" ng-submit="vm.signup(vm.newuser)" name="signupForm">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1"><i class="ion-android-mail"></i></span>
+                <input type="email" ng-model="vm.newuser.UserName" class="form-control" name="email" placeholder="Email" required autofocus aria-describedby="basic-addon1">
+              </div>
+              <br/>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon2"><i class="ion-android-lock"></i></span>
+                <input type="password" ng-model="vm.newuser.Password" class="form-control" name="password" placeholder="Password" required aria-describedby="basic-addon2">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3"><i class="ion-android-lock"></i></span>
+                <input type="password" ng-model="vm.newuser.ConfirmPassword" class="form-control" name="password" placeholder="Repeat password" required aria-describedby="basic-addon3">
+              </div>
+              <br/>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon4"><i class="fa fa-road"></i></span>
+                <input type="text" ng-model="vm.newuser.FirstName" class="form-control" required placeholder="Firstname"  aria-describedby="basic-addon4">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon4"><i class="fa fa-road"></i></span>
+                <input type="text" ng-model="vm.newuser.LastName" class="form-control" required placeholder="Lastname">
+              </div>
+              <br/>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon4"><i class="fa fa-road"></i></span>
+                <input type="text" ng-model="vm.newuser.AddressLine1" class="form-control" placeholder="Address line 1" required aria-describedby="basic-addon4">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon4"><i class="fa fa-road"></i></span>
+                <input type="text" ng-model="vm.newuser.AddressLine2" class="form-control" placeholder="Address line 2">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon4"><i class="fa fa-road"></i></span>
+                <input type="text" ng-model="vm.newuser.AddressLine3" class="form-control" placeholder="Address line 3">
+              </div>
+              <br/>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon5"><i class="fa fa-location-arrow"></i></span>
+                <input type="text" ng-model="vm.newuser.Postal" class="form-control" placeholder="Postal code" aria-describedby="basic-addon5">
+              </div>
+              <br/>
+              <button type="submit" ng-disabled="signupForm.$invalid" class="btn btn-lg  btn-block btn-success">Sign up!</button>
+            </form>
+
           </p>
         </div>
       </div>

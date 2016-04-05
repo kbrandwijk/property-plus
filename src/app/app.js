@@ -23,4 +23,6 @@ angular.module('app', [
 .config(AuthConfig)
 
 .component('app', AppComponent)
-.component('navbar', NavBarComponent);
+.component('navbar', NavBarComponent)
+
+.run(($state) => { "ngInject";$state.go("landing")});
