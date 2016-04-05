@@ -21,7 +21,7 @@ export default class LoginCtrl {
         })
         .then(() => $auth.login("username=" + this.newuser.UserName + "&password=" + this.newuser.Password + "&grant_type=password&client_id=defaultWeb")
           .then(() => $http.get('http://demoapi03032016.azurewebsites.net/api/Client', { headers: {'Authorization': 'Bearer ' + $auth.getToken()}})
-            .then((response) => {
+            /*.then((response) => {
               $http.put('http://demoapi03032016.azurewebsites.net/api/Client', {
                 userId: response.data.userId,
                 firstName: this.newuser.FirstName,
@@ -36,9 +36,10 @@ export default class LoginCtrl {
                   },
                   emailAddress: this.newuser.UserName,
                 }]
-              }).then(() => $state.go('dashboard'));
-            })
-          )
+              })*/
+              .then(() => $state.go('dashboard'))
+            )
+          //)
         );
     };
 
