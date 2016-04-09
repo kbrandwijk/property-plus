@@ -1,14 +1,17 @@
 <!-- Place all UI elements intended to be present across all routes in this file -->
 <div class="app">
     <navbar></navbar>
-    <div class="container-fluid body-content" style="background-image: url('images/home.jpg');background-attachment: fixed; background-position: center 20%; ">
-        <div ui-view></div>
-    </div>
-    <nav class="navbar navbar-light navbar-fixed-bottom bg-faded">
-    <div class="container">
-        <div class="nav navbar-nav">
-            <a class="nav-item nav-link" ui-sref="terms">Terms of Use</a>
+    <div class="container-fluid">
+        <div style="position:absolute;left:0;right:0;top:50px;height:250px;background-image: url('images/home.jpg');background-attachment: fixed;background-position: center 62%;"></div>
+        <div class="container-fluid body-content" style="top:300px;overflow-y:auto">
+            <div ui-view></div>
         </div>
     </div>
-</nav>
+    <nav class="navbar navbar-light navbar-fixed-bottom bg-faded">
+        <div class="container">
+            <div class="nav navbar-nav">
+                <a class="nav-item nav-link" ui-sref="terms">Terms of Use</a>
+            </div>
+        </div>
+    </nav>
 </div>
